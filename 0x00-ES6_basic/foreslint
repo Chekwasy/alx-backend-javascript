@@ -1,0 +1,4 @@
+after putting the three files
+npm install
+npm install eslint
+npx eslint --fix file.js
