@@ -1,0 +1,13 @@
+/* eslint-disable import/extensions */
+export default function appendToEachArrayValue(array, appendString) {
+  let value = '';
+  let idxx = 0;
+  for (const idx of array) {
+    if (idx) {
+	    value = array[idxx];
+	    array[idxx] = appendString + value;
+	    idxx += 1;
+    }
+  }
+  return array;
+}
