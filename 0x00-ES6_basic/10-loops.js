@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 export default function appendToEachArrayValue(array, appendString) {
   let value = '';
   const nwarr = [];
