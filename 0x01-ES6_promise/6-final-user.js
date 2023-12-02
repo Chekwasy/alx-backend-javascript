@@ -7,7 +7,7 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
   return Promise.allSettled([pr1, pr2]).then((response) => {
     const lst = [];
     response.forEach((item) => {
-      if (item.status === 'fulfiled') {
+      if (item.status === 'fulfilled') {
         lst.push({ status: item.status, value: item.value });
       } else {
         lst.push({ status: item.status, value: `${item.reason}` });
