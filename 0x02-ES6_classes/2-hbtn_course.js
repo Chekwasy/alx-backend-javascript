@@ -1,18 +1,19 @@
+/* eslint-disabled */
 export default class HolbertonCourse {
   constructor(name, length, students) {
     if (typeof name !== 'string') {
-	throw new TypeError('Name must be a string');
+      throw new TypeError('Name must be a string');
     }
     if (typeof length !== 'number') {
-	throw new TypeError('Length must be a number');
+      throw new TypeError('Length must be a number');
     }
     if (Array.isArray(students) === false) {
-	throw new TypeError('Students must be an array');
+      throw new TypeError('Students must be an array');
     }
     for (const itm of students) {
-	if (typeof itm !== 'string') {
+      if (typeof itm !== 'string') {
         throw new TypeError('Array must be an array of string');
-	}
+      }
     }
     this._name = name;
     this._length = length;
@@ -25,7 +26,7 @@ export default class HolbertonCourse {
 
   set name(nm) {
     if (typeof nm !== 'string') {
-	throw new TypeError('Name must be a string');
+      throw new TypeError('Name must be a string');
     }
     this._name = nm;
   }
@@ -36,7 +37,7 @@ export default class HolbertonCourse {
 
   set length(len) {
     if (typeof len !== 'number') {
-	throw new TypeError('Length must be a number');
+      throw new TypeError('Length must be a number');
     }
     this._length = len;
   }
@@ -47,12 +48,12 @@ export default class HolbertonCourse {
 
   set students(stu) {
     if (Array.isArray(stu) === false) {
-	throw new TypeError('Students must be an array');
+      throw new TypeError('Students must be an array');
     }
     for (const itmm of stu) {
-	if (typeof itmm !== 'string') {
+      if (typeof itmm !== 'string') {
         throw new TypeError('Array must be an array of string');
-	}
+      }
     }
     this._students = stu;
   }
