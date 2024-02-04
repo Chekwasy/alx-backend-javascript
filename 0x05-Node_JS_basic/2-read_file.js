@@ -25,7 +25,7 @@ const countStudents = (path) => {
       swe.push(ech[0]);
     }
   }
-  const len = cs.length + swe.length
+  const len = cs.length + swe.length;
   console.log(`Number of students: ${len}`);
   console.log(
     `Number of students in CS: ${cs.length}. List: ${cs.join(', ')}`,
