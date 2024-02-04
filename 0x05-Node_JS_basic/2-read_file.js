@@ -11,7 +11,6 @@ const countStudents = (path) => {
     throw new Error('Cannot load the database');
   }
   const readed = filechk.readFileSync(path, 'utf-8').split('\n');
-  const len = readed.length - 1;
   const allStd = [];
   for (const std of readed.slice(1)) {
     allStd.push(std.split(','));
@@ -26,6 +25,7 @@ const countStudents = (path) => {
       swe.push(ech[0]);
     }
   }
+  const len = cs.length + swe.length
   console.log(`Number of students: ${len}`);
   console.log(
     `Number of students in CS: ${cs.length}. List: ${cs.join(', ')}`,
