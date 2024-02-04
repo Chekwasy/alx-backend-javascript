@@ -1,46 +1,37 @@
-const fs = require('fs');
-
 /**
- * Counts the students in a CSV data file.
- * @param {String} dataPath The path to the CSV data file.
- * @author Bezaleel Olakunori <https://github.com/B3zaleel>
- */
-const countStudents = (dataPath) => {
-  if (!fs.existsSync(dataPath)) {
-    throw new Error('Cannot load the database');
-  }
-  if (!fs.statSync(dataPath).isFile()) {
-    throw new Error('Cannot load the database');
-  }
-  const fileLines = fs
-    .readFileSync(dataPath, 'utf-8')
-    .toString('utf-8')
-    .trim()
-    .split('\n');
-  const studentGroups = {};
-  const dbFieldNames = fileLines[0].split(',');
-  const studentPropNames = dbFieldNames.slice(0, dbFieldNames.length - 1);
+ * read a file and run some work on the file contents
+ */ 
+const filechk = require('fs');
 
-  for (const line of fileLines.slice(1)) {
-    const studentRecord = line.split(',');
-    const studentPropValues = studentRecord.slice(0, studentRecord.length - 1);
-    const field = studentRecord[studentRecord.length - 1];
-    if (!Object.keys(studentGroups).includes(field)) {
-      studentGroups[field] = [];
+const countStudents = (path) => {
+    if (!filechk.existsSync(path)) {
+	throw new Error('Cannot load the database');
     }
-    const studentEntries = studentPropNames
-      .map((propName, idx) => [propName, studentPropValues[idx]]);
-    studentGroups[field].push(Object.fromEntries(studentEntries));
-  }
-
-  const totalStudents = Object
-    .values(studentGroups)
-    .reduce((pre, cur) => (pre || []).length + cur.length);
-  console.log(`Number of students: ${totalStudents}`);
-  for (const [field, group] of Object.entries(studentGroups)) {
-    const studentNames = group.map((student) => student.firstname).join(', ');
-    console.log(`Number of students in ${field}: ${group.length}. List: ${studentNames}`);
-  }
-};
-
+    if (!filechk.statSync(path).isFile()) {
+	throw new Error('Cannot load the database');
+    }
+    const readed = filechk.readFileSync(path, 'utf-8').split('\n');
+    const len = readed.length - 1;
+    const all_std = [];
+    for (const std of readed.slice(1)) {
+	all_std.push(std.split(','));
+    }
+    const cs = []
+    const swe = []
+    for (const ech of all_std) {
+	if (ech.includes('CS')) {
+	    cs.push(ech[0]);
+	}
+	if (ech.includes('SWE')) {
+	    swe.push(ech[0]);
+	}
+    }
+    console.log(`Number of students: ${ len }`);
+    console.log(
+	`Number of students in CS: ${ cs.length }. List: ${ cs.join(', ') }`
+    );
+    console.log(
+	`Number of students in SWE: ${ swe.length }. List: ${ swe.join(', ') }`
+    );
+}
 module.exports = countStudents;
