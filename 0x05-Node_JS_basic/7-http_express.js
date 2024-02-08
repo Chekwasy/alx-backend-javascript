@@ -3,13 +3,7 @@ const fs = require('fs');
 
 const app = express();
 const PORT = 1245;
-let DB_FILE = ''
-if (process.argv.length > 2) {
-    DB_FILE = process.argv[2]
-}
-else {
-    DB_FILE = '';
-}
+const DB_FILE = process.argv[2];
 
 
 /**
