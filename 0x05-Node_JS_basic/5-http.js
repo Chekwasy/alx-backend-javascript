@@ -4,7 +4,14 @@ const fs = require('fs');
 const PORT = 1245;
 const HOST = 'localhost';
 const app = http.createServer();
-const DB_FILE = process.argv.length > 2 ? process.argv[2] : '';
+let DB_FILE = ''
+if (process.argv.length > 2) {
+    DB_FILE = process.argv[2]
+}
+else {
+    DB_FILE = '';
+}
+
 
 /**
  * Counts the students in a CSV data file.
